@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Page title -->
+        <title>FP Project {% block page-title %}{% endblock %}</title>
+        <!-- Page description -->
+        <meta name="description" content="">
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Favicon  -->
+        <link rel="icon" type="image/png" href="{% static 'global/img/favicons/favicon-16x16.png' %}" sizes="16x16">
+        <link rel="icon" type="image/png" href="{% static 'global/img/favicons/favicon-32x32.png' %}" sizes="32x32">
+        <link rel="icon" type="image/png" href="{% static 'global/img/favicons/favicon-96x96.png' %}" sizes="96x96">
+        <link rel="apple-touch-icon" sizes="57x57" href="{% static 'global/img/favicons/apple-touch-icon-57x57.png' %}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{% static 'global/img/favicons/apple-touch-icon-60x60.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'global/img/favicons/apple-touch-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'global/img/favicons/apple-touch-icon-76x76.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'global/img/favicons/apple-touch-icon-114x114.png' %}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{% static 'global/img/favicons/apple-touch-icon-120x120.png' %}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{% static 'global/img/favicons/apple-touch-icon-144x144.png' %}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{% static 'global/img/favicons/apple-touch-icon-152x152.png' %}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'global/img/favicons/apple-touch-icon-180x180.png' %}">
+        <!-- Include StyleSheets -->
+        <link rel="stylesheet" href="{% static 'global/css/style.min.css' %}">
+        <link rel="stylesheet" href="{% static 'global/css/custom.css' %}">
+    </head>
+    <body class="">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- Preloader: uncomment this if you want to show a smooth preloader while the page is loading. Don't forget to add the 'js-preload-me' class on the <body> tag. -->
+        <!-- <div class="preloader js-preloader"><div class="preloader-animation"></div></div>
+     -->
+        <!-- End of Preloader -->
+        <div class="page js-page ">
+            {% include 'base/includes/header.html' %}
+            <div id="content">
+                <div class="container-fluid container-spaced">
+                    <div class="layout with-left-sidebar js-layout">
+                        <div class="row">
+                            {% if user.is_authenticated %}
+                            <!-- Left Menu -->
+                            <div class="col-md-3 hidden-sm hidden-xs">
+                                <div class="sidebar js-sidebar-fixed">
+                                    {% block action_button %}{% endblock %}
+                                    <div class="widget">
+                                        <!-- Search -->
+                                        <div class="search">
+                                            <form action="#">
+                                                <input type="text" class="search-input form-control" placeholder="search">
+                                                <i class="fa fa-search search-icon"></i>
+                                            </form>
+                                        </div>
+                                        <!-- End of Search -->
+                                    </div>
+                                    <!-- Vertical Menu -->
+                                    <nav class="menu-vertical-wrapper">
+                                        <ul class="menu-vertical  js-menu-vertical" data-prepend-to=".js-layout" data-select="Menu">
+                                            <li>
+                                                <a href="/post">Noticeboard</a>
+                                            </li>
+                                            <li>
+                                                <a href="/game">Games</a>
+                                            </li>
+                                            <li>
+                                                <a href="/tool">Content Learning Tools</a>
+                                            </li>
+                                            <li>
+                                                <a href="/manual">User Manual</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!-- End of Left Menu-->
+                            {% endif %}
+                            {% block content %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include 'base/includes/footer.html' %}
+        </div>
+        <script src="{% static 'global/js/modernizr.js' %}"></script>
+        <script src="{% static 'global/js/all.js' %}"></script>
+        <script src="{% static 'global/js/custom.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+        {% block javascript %}{% endblock %}
+    </body>
+</html>

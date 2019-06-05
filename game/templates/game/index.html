@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block action_button %}
+	<a href="#" class="button helper mb30 stroke full blue js-open-modal" data-target=".js-modal-7">Add Game</a>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-9">
+	<div class="main-content">
+		<!-- Category Info -->
+		<div class="category-info helper pt0" id="list-view">
+			<h3 class="category-title"> Educational Games</h3>
+		</div>
+		<!-- End of Caregory Info -->
+		<!-- List View -->
+		<div class="list-view">
+			{% for game in all_games %}
+			<div class="list-item">
+				<div class="list-item-header">
+					<h3 class="list-item-title">
+						<a href="#">{{ game.title }}</a>
+					</h3>
+				</div>
+				<div class="list-item-content">
+					<iframe align="center" frameborder="0" allowtransparency="true"  scrolling="no" src="{{ game.link }}" width="100%" height="550px"></iframe>
+
+				</div>
+				<div class="list-item-content">
+					{{ game.desc }}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<!-- End of List View -->
+	</div>
+</div>
+
+<!-- Post Modal-->
+<div class="modal-alt js-modal-7">
+	<!-- Modal Header -->
+	<div class="modal-alt-header">
+		<div class="modal-alt-header-ico">
+			<span class="modal-alt-header-line line-right"></span>
+			<i class="pe-7s-note"></i>
+			<span class="modal-alt-header-line line-left"></span>
+		</div>
+		<h4 class="modal-alt-title"> Add a new game</h4>
+		<p class="modal-alt-description">Insert the game's embed code below.</p>
+	</div>
+	<!-- End of Modal Header -->
+	<!-- Modal Content -->
+	<div class="modal-alt-content">
+		<div class="review-form">
+			<form method="POST" action="{{ request.build_absolute_uri|safe }}" id="post-form">
+				{% csrf_token %}
+				{{ form }}
+				<div class="helper center">
+					<button class="button rounded large blue modal-alt-button js-close-modal-button">
+						<span class="modal-alt-button-text">submit game</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- End of Modal Content -->
+</div>
+<!-- End of Post Modal-->
+{% endblock %}
+
+{% block javascript %}
+  <script>
+  	$(".js-close-modal-button").click(function () {
+		$('#post-form').submit();
+	});
+  </script>
+{% endblock %}

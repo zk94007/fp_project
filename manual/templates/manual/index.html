@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Page title -->
+	<title>QUT Multilingual Noticeboard</title>
+	<!-- Page description -->
+	<meta name="description" content="">
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon  -->
+	<link rel="icon" type="image/png" href="{% static 'global/img/favicons/favicon-16x16.png' %}" sizes="16x16">
+	<link rel="icon" type="image/png" href="{% static 'global/img/favicons/favicon-32x32.png' %}" sizes="32x32">
+	<link rel="icon" type="image/png" href="{% static 'global/img/favicons/favicon-96x96.png' %}" sizes="96x96">
+	<link rel="apple-touch-icon" sizes="57x57" href="{% static 'global/img/favicons/apple-touch-icon-57x57.png' %}">
+	<link rel="apple-touch-icon" sizes="60x60" href="{% static 'global/img/favicons/apple-touch-icon-60x60.png' %}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{% static 'global/img/favicons/apple-touch-icon-72x72.png' %}">
+	<link rel="apple-touch-icon" sizes="76x76" href="{% static 'global/img/favicons/apple-touch-icon-76x76.png' %}">
+	<link rel="apple-touch-icon" sizes="114x114" href="{% static 'global/img/favicons/apple-touch-icon-114x114.png' %}">
+	<link rel="apple-touch-icon" sizes="120x120" href="{% static 'global/img/favicons/apple-touch-icon-120x120.png' %}">
+	<link rel="apple-touch-icon" sizes="144x144" href="{% static 'global/img/favicons/apple-touch-icon-144x144.png' %}">
+	<link rel="apple-touch-icon" sizes="152x152" href="{% static 'global/img/favicons/apple-touch-icon-152x152.png' %}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'global/img/favicons/apple-touch-icon-180x180.png' %}">
+	<!-- Include StyleSheets -->
+	<link rel="stylesheet" href="{% static 'global/css/style.min.css' %}">
+	<!-- <link rel="stylesheet" href="{% static 'global/css/custom.css' %}"> -->
+	<script src="{% static 'global/js/modernizr.js' %}"></script>
+</head>
+
+<body class="">
+	<!--[if lt IE 8]>
+	    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+	<!-- Preloader: uncomment this if you want to show a smooth preloader while the page is loading. Don't forget to add the 'js-preload-me' class on the <body> tag. -->
+	<!-- <div class="preloader js-preloader"><div class="preloader-animation"></div></div>
+ -->
+	<!-- End of Preloader -->
+	<div class="page js-page ">
+		<!-- One Page Content -->
+		<div>
+			<!-- Header -->
+			<header class="header large header-one-page ">
+				<div class="container-fluid container-spaced">
+					<div class="row">
+						<div class="col-md-3 col-sm-6 col-xs-5">
+							<div class="visible-sm-block visible-xs-block">
+								<!-- Logo Image -->
+								<a href="/" class="logo-image logo-animated">
+									<img src="{% static 'global/img/logos/logo.png' %}" alt="logo">
+								</a>
+								<!-- End of Logo Image -->
+							</div>
+						</div>
+						<div class="col-md-9 col-sm-6 col-xs-7">
+							<!-- Menu -->
+							<nav class="right helper">
+								<ul class="menu sf-menu js-menu">
+									<li>
+										<a href="/">Home</a>
+									</li>
+									{% if user.is_authenticated %}
+									<li>
+										<a href="#">{{user.first_name}} {{user.last_name}}</a>
+										<ul>
+											<li>
+												<a href="#">Settings</a>
+											</li>
+											<li>
+												<a href="/accounts/logout">Logout</a>
+											</li>
+										</ul>
+									</li>
+									{% else %}
+									<li>
+										<a href="/accounts/login">Login</a>
+									</li>
+									<li>
+										<a href="/register">Register</a>
+									</li>
+									{% endif %}
+								</ul>
+							</nav>
+							<!-- End of Menu -->
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- End of Header -->
+			<div>
+				<div class="container-fluid container-spaced">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="js-prepend-mobile-menu">
+								<!-- The mobile menu will be prepended here -->
+							</div>
+							<!-- Category Info -->
+							<div class="category-info " id="faq">
+								<h3 class="category-title"> Frequently Asked Questions </h3>
+								<h4 class="category-description">Use the search function to search for your question quicker.</h4>
+							</div>
+							<!-- End of Caregory Info -->
+							<!-- Faq -->
+							<div class="faq-filter js-faq-filter" data-target="#my-faq">
+								<input type="text" placeholder="How to ..."> </div>
+							<ul class="faq js-faq" id="my-faq">
+								<li class="faq-item">
+									<h4 class="faq-question"> How do I login to the site? </h4>
+									<div class="faq-answer"> You can use your registered user name and password to login to the notice board. </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> How do I translate the text? </h4>
+									<div class="faq-answer"> There is a button at the top right of the page which you can click to translate the page into other languages. </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> How do I upload games to the site? </h4>
+									<div class="faq-answer"> For a normal user, you can send the link to our contact email at <a href="mailto:contact@me.edu.au">contact@me.edu.au</a> and include the link of the game so we may upload it.
+									<br>
+									For developers, you may enter the game and upload it yourself by clicking on games and upload. </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> How do I logout? </h4>
+									<div class="faq-answer"> You can logout by clicking the logout link at the top right of the page, which will take you back to the homepage. </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> How do I search for courses? </h4>
+									<div class="faq-answer"> You can search for courses using the search bar at the top left by entering what you want to look for and clicking the search button. </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> How do I access the games? </h4>
+									<div class="faq-answer"> You can access games by clicking on the link on the left of the web application labeled "Games" and choose one of the many choices to play. </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> What do I do if I can’t login? </h4>
+									<div class="faq-answer"> You may send us an email at <a href="mailto:contact@me.edu.au">contact@me.edu.au</a> with your email login. We will process a password replacement within 24 hours. </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> How do I share content? </h4>
+									<div class="faq-answer"> On the noticeboard page, there is a button “New Post” that you can click. Upon clicking, a dropdown will appear and you are able to create a new post. </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> What are the restrictions when creating a post? </h4>
+									<div class="faq-answer"> The restrictions when creating a post will be a character limit of 5000 characters as to not overload the server currently and you can only upload five photos or one video up to a length of five minutes with every post.  </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> What sort of content can I post? </h4>
+									<div class="faq-answer"> You are able to post text, videos and image contents. All contents posted will be vetted, in order to ensure that they comply with our terms of use. </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> Are all the content that I post uploaded immediately? </h4>
+									<div class="faq-answer"> Content such as text and images will be uploaded immediately. Content such as videos will be manually vetted. </div>
+								</li>
+								<li class="faq-item">
+									<h4 class="faq-question"> My question hasn’t been answered, what do I do? </h4>
+									<div class="faq-answer"> If we have missed any questions or you have any queries or concerns, feel free to contact us on our email at <a href="mailto:contact@me.edu.au">contact@me.edu.au</a>. </div>
+								</li>
+							</ul>
+							<!-- End of Faq -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End of One Page Content -->
+	</div>
+	<script src="{% static 'global/js/all.js' %}"></script>
+	<script src="{% static 'global/js/custom.js' %}"></script>
+</body>
+
+</html>

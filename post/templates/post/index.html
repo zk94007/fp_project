@@ -1,0 +1,76 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block action_button %}
+	<a href="#" class="button helper mb30 stroke full blue js-open-modal" data-target=".js-modal-7">New Post</a>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-9">
+	<div class="main-content">
+		<!-- Category Info -->
+		<div class="category-info helper pt0" id="list-view">
+			<h3 class="category-title"> Notice Board</h3>
+		</div>
+		<!-- End of Caregory Info -->
+		<!-- List View -->
+		<div class="list-view">
+			{% for post in all_posts %}
+			<div class="list-item">
+				<div class="list-item-header">
+					<h3 class="list-item-title">
+						<a href="#">{{ post.title }}</a>
+					</h3>
+				</div>
+				<div class="list-item-content"> {{ post.body }} </div>
+				<div class="blog-grid-meta">
+					<span class="blog-grid-date"> {{ post.created_at|date:'M d, Y' }}</span>
+					<span class="blog-grid-author">by <a href="#">{{ post.created_by.full_name }}</a></span>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<!-- End of List View -->
+	</div>
+</div>
+
+<!-- Post Modal-->
+<div class="modal-alt js-modal-7">
+	<!-- Modal Header -->
+	<div class="modal-alt-header">
+		<div class="modal-alt-header-ico">
+			<span class="modal-alt-header-line line-right"></span>
+			<i class="pe-7s-note"></i>
+			<span class="modal-alt-header-line line-left"></span>
+		</div>
+		<h4 class="modal-alt-title"> Add a new post</h4>
+		<p class="modal-alt-description">Type up your post.</p>
+	</div>
+	<!-- End of Modal Header -->
+	<!-- Modal Content -->
+	<div class="modal-alt-content">
+		<div class="review-form">
+			<form method="POST" action="{{ request.build_absolute_uri|safe }}" id="post-form">
+				{% csrf_token %}
+				{{ form }}
+				<div class="helper center">
+					<button class="button rounded large blue modal-alt-button js-close-modal-button">
+						<span class="modal-alt-button-text">submit post</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- End of Modal Content -->
+</div>
+<!-- End of Post Modal-->
+{% endblock %}
+
+{% block javascript %}
+  <script>
+	$(".js-close-modal-button").click(function () {
+	  $('#post-form').submit();
+  });
+  </script>
+{% endblock %}

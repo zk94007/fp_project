@@ -1,0 +1,61 @@
+{% load static %}
+<!-- Header -->
+<div class="header background-2">
+	<div class="container-fluid container-spaced">
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-xs-6">
+				<!-- Logo Image -->
+				<a href="/" class="logo-image logo-animated">
+					<img src="{% static 'global/img/logos/logo.png' %}" alt="logo">
+				</a>
+				<!-- End of Logo Image -->
+			</div>
+			<div class="col-md-9 col-sm-6 col-xs-6">
+				<!-- Menu -->
+				<nav class="right helper">
+					<ul class="menu sf-menu js-menu">
+						<li>
+							<a href="#">{{user.first_name}} {{user.last_name}}</a>
+							<ul>
+								<li>
+									<a href="#">Settings</a>
+								</li>
+								<li>
+									<a href="/accounts/logout">Logout</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">EN</a>
+							<ul>
+								<li>
+									<a href="panels.html">IT</a>
+								</li>
+								<li>
+									<a href="faq.html">JA</a>
+								</li>
+								<li>
+									<a href="notification.html">KO</a>
+								</li>
+								<li>
+									<a href="tutorial.html">PL</a>
+								</li>
+								<li>
+									<a href="login.html">RU</a>
+								</li>
+								<li>
+									<a href="register.html">SV</a>
+								</li>
+								<li>
+									<a href="404.html">TH</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<!-- End of Menu -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Header -->

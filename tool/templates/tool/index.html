@@ -1,0 +1,85 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block action_button %}
+	<a href="#" class="button helper mb30 stroke full blue js-open-modal" data-target=".js-modal-7">Add Tool</a>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-9">
+	<div class="main-content">
+		<!-- List View -->
+		<div class="list-view">
+			{% for tool in all_tools %}
+			<!-- Article -->
+			<article class="article">
+				<!-- Article Title -->
+				<h2 class="article-title">{{ tool.title }}</h2>
+				<a href="{{ tool.link }}" class="button helper mb30 stroke large blue" target="_blank" style="float: right;">Access Tool</a>
+				<!-- End of Article Title -->
+				<!-- Article Meta -->
+				<ul class="article-meta">
+					<li>
+						<span class="article-meta-author article-meta-item">
+							<a href="#">{{ tool.created_by.full_name }}</a>
+						</span>
+					</li>
+					<li>
+						<span class="article-meta-category article-meta-item">
+							<a href="#">Learning Tools</a>
+						</span>
+					</li>
+				</ul>
+				<!-- End of Article Meta -->
+				<!-- Article Content -->
+				<div class="article-content">
+					{{ tool.desc}}
+				</div>
+				<!-- End of Article Content -->
+			</article>
+			<!-- End of Article -->
+			{% endfor %}
+		</div>
+		<!-- End of List View -->
+	</div>
+</div>
+
+<!-- Post Modal-->
+<div class="modal-alt js-modal-7">
+	<!-- Modal Header -->
+	<div class="modal-alt-header">
+		<div class="modal-alt-header-ico">
+			<span class="modal-alt-header-line line-right"></span>
+			<i class="pe-7s-note"></i>
+			<span class="modal-alt-header-line line-left"></span>
+		</div>
+		<h4 class="modal-alt-title"> Add a new tool</h4>
+	</div>
+	<!-- End of Modal Header -->
+	<!-- Modal Content -->
+	<div class="modal-alt-content">
+		<div class="review-form">
+			<form method="POST" action="{{ request.build_absolute_uri|safe }}" id="post-form">
+				{% csrf_token %}
+				{{ form }}
+				<div class="helper center">
+					<button class="button rounded large blue modal-alt-button js-close-modal-button">
+						<span class="modal-alt-button-text">submit tool</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- End of Modal Content -->
+</div>
+<!-- End of Post Modal-->
+{% endblock %}
+
+{% block javascript %}
+  <script>
+  	$(".js-close-modal-button").click(function () {
+		$('#post-form').submit();
+	});
+  </script>
+{% endblock %}

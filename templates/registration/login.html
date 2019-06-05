@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+
+{% block page-title %} - Login {% endblock %}
+
+{% block content %}
+    <div class="col-md-4">
+        <div class="main-content">
+
+            <div class="category-info helper pt0" id="list-view">
+                <h3 class="category-title">Login</h3>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <h6>
+                                {{ form.non_field_errors.as_text }}
+                            </h6>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <label for="id_username">{{ form.username.label }}</label>
+                        <input name="username" class="form-control" required="" id="id_username" type="text" placeholder="Username">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <label for="id_password">{{ form.password.label }}</label>
+                        <input name="password" class="form-control" required="" id="id_password" type="password" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="form-group form-check row">
+                    <div class="col-sm-12">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Stay logged in</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="button helper mb30 stroke full blue">Login</button>
+                    </div>
+                </div>
+            </form>
+
+            <h5>Don't have a login?</h5>
+            <div class="row">
+                <a href="/register/" style="width:100%;">
+                    <div class="col-sm-12">
+                        <button class="button helper mb30 stroke full blue">Register</button>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+

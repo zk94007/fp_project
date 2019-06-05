@@ -1,0 +1,83 @@
+{% extends 'base/base.html' %}
+
+{% block page-title %} - Register {% endblock %}
+
+{% block content %}
+    <div class="col-md-4">
+        <div class="main-content">
+
+            <div class="category-info helper pt0" id="list-view">
+                <h3 class="category-title">Register</h3>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <h6>
+                                {{ form.non_field_errors.as_text }}
+                            </h6>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if form.errors %}
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <h6>{{ error }}</h6>
+                                {% endfor  %}
+                            {% endfor  %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <label for="id_first_name">{{ form.first_name.label }}</label>
+                        <input name="first_name" class="form-control" required="" id="id_first_name" type="text" placeholder="First name" value="{{ form.data.first_name }}">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <label for="id_last_name">{{ form.last_name.label }}</label>
+                        <input name="last_name" class="form-control" required="" id="id_last_name" type="text" placeholder="Last name" value="{{ form.data.last_name }}">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <label for="id_email">{{ form.email.label }}</label>
+                        <input name="email" class="form-control" required="" id="id_email" type="text" placeholder="email" value="{{ form.data.email }}">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <label for="id_password1">{{ form.password1.label }}</label>
+                        <input name="password1" class="form-control" required="" id="id_password1" type="password" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <label for="id_password2">{{ form.password2.label }}</label>
+                        <input name="password2" class="form-control" required="" id="id_password2" type="password" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="button helper mb30 stroke full blue">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
